@@ -1,4 +1,4 @@
-# REANO: Optimizing Retrieval-Augmented Reader Models through Knowledge Graph Generation 
+# REANO: Optimising Retrieval-Augmented Reader Models through Knowledge Graph Generation 
 
 This repository contains the PyTorch implementation of our REANO framework. Details about REANO can be found in our paper.
 
@@ -15,13 +15,13 @@ Open domain question answering (ODQA) aims to answer questions with knowledge fr
 In the preprocessing step, we generate KG triples for the retrieved documents following these steps: 
 
 ### 1. Download Data 
-For the NQ and TQA datasets, we use the data from the Fusion-in-Decoder repository [here](https://github.com/facebookresearch/FiD). For the other three datasets used in our experiments, we download them from their official websites: [EntityQuestion](https://github.com/princeton-nlp/EntityQuestions), [2WikiMultiHopQA](https://github.com/Alab-NII/2wikimultihop), [MuSiQue](https://github.com/StonyBrookNLP/musique). 
+For the NQ and TQA datasets, we use the data from the Fusion-in-Decoder repository [here](https://github.com/facebookresearch/FiD). For the other three datasets used in our experiments, we download them from their official websites: [EntityQuestions](https://github.com/princeton-nlp/EntityQuestions), [2WikiMultiHopQA](https://github.com/Alab-NII/2wikimultihop), [MuSiQue](https://github.com/StonyBrookNLP/musique). 
 
 After downloading the data, we use Spacy NER tool and TAGME entity linking tool to identify the entities within the passages. Additionally, we also extract the KG triples between these entities from Wikidata. The processed data `*_with_triples.pkl` can be downloaded from the `qa_data` folder at [here](https://osf.io/wn2q7/). 
 
 ### 2. Relation Extraction
 
-In REANO, we train a DocuNet modle on the REBEL dataset for intra-context relation extraction. To extract relations among entities within a passage, first download the relation information from the `rebel_data` folder at [here](https://osf.io/wn2q7/). Then download the DocuNet checkpoint from the `checkpoints` folder at the website. 
+In REANO, we train a DocuNet model on the REBEL dataset for intra-context relation extraction. To extract relations among entities within a passage, first download the relation information from the `rebel_data` folder at [here](https://osf.io/wn2q7/). Then download the DocuNet checkpoint from the `checkpoints` folder at the website. 
 
 Run the following command to obtain intra-context relations:
 ```
