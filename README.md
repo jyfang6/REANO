@@ -1,6 +1,6 @@
 # REANO: Optimising Retrieval-Augmented Reader Models through Knowledge Graph Generation 
 
-This repository contains the PyTorch implementation of our REANO framework. Details about REANO can be found in our paper.
+This repository contains the PyTorch implementation of our REANO framework. Details about REANO can be found in our [paper](https://aclanthology.org/2024.acl-long.115/).
 
 ## Introduction 
 Open domain question answering (ODQA) aims to answer questions with knowledge from an external corpus. Fusion-in-Decoder (FiD) is an effective retrieval-augmented reader model to address this task. Given that FiD independently encodes passages, which overlooks the semantic relationships between passages, some studies use knowledge graphs (KGs) to establish dependencies among passages. However, they only leverage knowledge triples from existing KGs, which suffer from incompleteness and may lack certain information critical for answering given questions. To this end, in order to capture the dependencies between passages while tacking the issue of incompleteness in existing KGs, we propose to enhance the retrieval017 augmented reader model with a knowledge graph generation module (REANO). Specifically, REANO consists of a KG generator and an answer predictor. The KG generator aims to generate KGs from the passages and the answer predictor then generates answers based on the passages and the generated KGs.
@@ -17,7 +17,7 @@ In the preprocessing step, we generate KG triples for the retrieved documents fo
 ### 1. Download Data 
 For the NQ and TQA datasets, we use the data from the Fusion-in-Decoder repository [here](https://github.com/facebookresearch/FiD). For the other three datasets used in our experiments, we download them from their official websites: [EntityQuestions](https://github.com/princeton-nlp/EntityQuestions), [2WikiMultiHopQA](https://github.com/Alab-NII/2wikimultihop), [MuSiQue](https://github.com/StonyBrookNLP/musique). 
 
-After downloading the data, we use Spacy NER tool and TAGME entity linking tool to identify the entities within the passages. Additionally, we also extract the KG triples between these entities from Wikidata. The processed data `*_with_triples.pkl` can be downloaded from the `qa_data` folder at [here](https://osf.io/wn2q7/). 
+After downloading the data, we use Spacy NER tool and TAGME entity linking tool to identify the entities within the passages. Additionally, we also extract the KG triples between these entities from Wikidata. The processed data `*_with_triples.pkl` can be downloaded from the `qa_data` folder at [here](https://osf.io/58a3t/). 
 
 ### 2. Relation Extraction
 
@@ -30,7 +30,7 @@ python -m relation_extraction.docunet_inference \
     --docunet_checkpoint /path/to/DocuNet/checkpoint/folder/docunet.ckpt \
     --data_folder data/2wikimultihopqa
 ```
-The `data_folder` is the folder where you put the `*_with_triples.pkl` files. Note that the DocuNet model requires specific versions of PyTorch and transformers to work, so you may need to follow the requirements in the `relation_extraction` folder to instantiate a new environment. 
+The `data_folder` is the folder where you put the `*_with_triples.pkl` files. Note that the DocuNet model requires specific versions of PyTorch and transformers to work, so you may need to follow the requirements in the `relation_extraction` folder to instantiate a new environment. The generated triples can be downloaded at [here](https://osf.io/58a3t/).
 
 ### 3. Prepare Data for Training and Evaluation 
 
